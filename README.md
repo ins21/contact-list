@@ -16,7 +16,7 @@ Definition of done:
 
 Doing this task in typescript is preferred. However, if you do not feel comfortable with typescript, please change file extension to js.
 
-Decide by yourself if you want to install additional dependencies, or code some functionality manually.
+We appreciate code that is written manually, so avoid including extra dependencies unless they are essential.
 Design choices are yours, but please stick to provided layout pattern. Please have UX in mind when making decisions.
 
 ![layout.png](layout.png)

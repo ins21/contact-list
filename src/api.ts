@@ -1,4 +1,5 @@
 import mockData from "./mockData.json";
+import { Contact } from "./types";
 
 let cursor = -1;
 const size = 10;
@@ -7,13 +8,18 @@ function delay(time: number): Promise<void> {
   return new Promise((resolve) => setTimeout(() => resolve(), time));
 }
 
-export default async function apiData() {
-  await delay(1000);
-  if (Math.random() > 0.7) {
-    throw new Error("Something went wrong");
+export default async function apiData(): Promise<Contact[]> {
+  try {
+    await delay(1000);
+    if (Math.random() > 0.7) {
+      throw new Error("Something went wrong");
+    }
+    cursor += 1;
+    const start = cursor * size;
+    const end = cursor * size + size;
+    return mockData.slice(start, end);
+  } catch (error) {
+    if (error instanceof Error) console.error(error.message);
+    return apiData();
   }
-  cursor += 1;
-  const start = cursor * size;
-  const end = cursor * size + size;
-  return mockData.slice(start, end);
 }
